@@ -70,7 +70,7 @@ class LazyloadTiktoken(object):
 
 # Endpoint 重定向
 API_URL_REDIRECT, AZURE_ENDPOINT, AZURE_ENGINE = get_conf("API_URL_REDIRECT", "AZURE_ENDPOINT", "AZURE_ENGINE")
-openai_endpoint = "https://api.openai.com/v1/chat/completions"
+openai_endpoint = "http://127.0.0.1:8000/v1/chat/completions"
 api2d_endpoint = "https://openai.api2d.net/v1/chat/completions"
 newbing_endpoint = "wss://sydney.bing.com/sydney/ChatHub"
 gemini_endpoint = "https://generativelanguage.googleapis.com/v1beta/models"
@@ -87,7 +87,7 @@ azure_endpoint = AZURE_ENDPOINT + f'openai/deployments/{AZURE_ENGINE}/chat/compl
 # 兼容旧版的配置
 try:
     API_URL = get_conf("API_URL")
-    if API_URL != "https://api.openai.com/v1/chat/completions":
+    if API_URL != "http://127.0.0.1:8000/v1/chat/completions":
         openai_endpoint = API_URL
         logger.warning("警告！API_URL配置选项将被弃用，请更换为API_URL_REDIRECT配置")
 except:
@@ -210,6 +210,26 @@ model_info = {
     },
 
     "gpt-4o-mini": {
+        "fn_with_ui": chatgpt_ui,
+        "fn_without_ui": chatgpt_noui,
+        "endpoint": openai_endpoint,
+        "has_multimodal_capacity": True,
+        "max_token": 128000,
+        "tokenizer": tokenizer_gpt4,
+        "token_cnt": get_token_num_gpt4,
+    },
+
+    "gpt-4o-20241120": {
+        "fn_with_ui": chatgpt_ui,
+        "fn_without_ui": chatgpt_noui,
+        "endpoint": openai_endpoint,
+        "has_multimodal_capacity": True,
+        "max_token": 128000,
+        "tokenizer": tokenizer_gpt4,
+        "token_cnt": get_token_num_gpt4,
+    },
+
+    "gpt-4o-mini-20240718": {
         "fn_with_ui": chatgpt_ui,
         "fn_without_ui": chatgpt_noui,
         "endpoint": openai_endpoint,

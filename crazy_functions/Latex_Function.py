@@ -31,7 +31,7 @@ def switch_prompt(pfg, mode, more_requirement):
         sys_prompt_array = ["You are a professional academic paper writer." for _ in range(n_split)]
     elif mode == 'translate_zh':
         inputs_array = [
-            r"Below is a section from an English academic paper, translate it into Chinese. " + more_requirement +
+            r"Below is a section from an English academic paper, translate it into Chinese. 请翻译成中文, 不要保留英文原文, 翻译的时候保持原本的latex格式。" + more_requirement +
             r"Do not modify any latex command such as \section, \cite, \begin, \item and equations. " +
             r"Answer me only with the translated text:" +
             f"\n\n{frag}" for frag in pfg.sp_file_contents]

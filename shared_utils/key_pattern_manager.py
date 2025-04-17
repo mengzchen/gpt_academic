@@ -18,12 +18,13 @@ openai_regex = re.compile(
     r"sess-[a-zA-Z0-9]{40}$"
 )
 def is_openai_api_key(key):
-    CUSTOM_API_KEY_PATTERN = get_conf('CUSTOM_API_KEY_PATTERN')
-    if len(CUSTOM_API_KEY_PATTERN) != 0:
-        API_MATCH_ORIGINAL = re.match(CUSTOM_API_KEY_PATTERN, key)
-    else:
-        API_MATCH_ORIGINAL = openai_regex.match(key)
-    return bool(API_MATCH_ORIGINAL)
+    return True
+    # CUSTOM_API_KEY_PATTERN = get_conf('CUSTOM_API_KEY_PATTERN')
+    # if len(CUSTOM_API_KEY_PATTERN) != 0:
+    #     API_MATCH_ORIGINAL = re.match(CUSTOM_API_KEY_PATTERN, key)
+    # else:
+    #     API_MATCH_ORIGINAL = openai_regex.match(key)
+    # return bool(API_MATCH_ORIGINAL)
 
 
 def is_azure_api_key(key):

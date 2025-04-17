@@ -72,7 +72,7 @@ def 多文件翻译(file_manifest, project_folder, llm_kwargs, plugin_kwargs, ch
 
     #  <-------- 多线程润色开始 ---------->
     if language == 'en->zh':
-        inputs_array = ["Below is a section from an English academic paper, translate it into Chinese, do not modify any latex command such as \section, \cite and equations:" +
+        inputs_array = ["Below is a section from an English academic paper, translate it into Chinese, 请翻译成中文, 不要保留英文原文, 翻译的时候保持原本的latex格式, do not modify any latex command such as \section, \cite and equations:" +
                         f"\n\n{frag}" for frag in pfg.sp_file_contents]
         inputs_show_user_array = [f"翻译 {f}" for f in pfg.sp_file_tag]
         sys_prompt_array = ["You are a professional academic paper translator." for _ in range(n_split)]

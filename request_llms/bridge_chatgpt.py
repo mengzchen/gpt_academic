@@ -300,6 +300,9 @@ def predict(inputs:str, llm_kwargs:dict, plugin_kwargs:dict, chatbot:ChatBotWith
     ui_reflesh_min_interval = 0.0
     while True:
         try:
+            # print(f"endpoint: {endpoint}")
+            # print(f"json: {payload}")
+
             # make a POST request to the API endpoint, stream=True
             response = requests.post(endpoint, headers=headers, proxies=proxies,
                                     json=payload, stream=stream, timeout=TIMEOUT_SECONDS);break
